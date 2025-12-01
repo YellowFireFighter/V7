@@ -1,4 +1,4 @@
--- Variables fix toggles not saving and fix section dragging or just remove it for now then actually work on fanta.club
+-- Variables 
     local uis = game:GetService("UserInputService") 
     local players = game:GetService("Players") 
     local ws = game:GetService("Workspace")
@@ -1625,7 +1625,6 @@
             local cfg = {
                 name = properties.name or properties.Name or "section", 
                 side = properties.side or "left",
-                fill = properties.fill or 0.01,
             }   
 
             -- Instances
@@ -1635,7 +1634,8 @@
                     Parent = parent;
                     BackgroundTransparency = 1;
                     BorderColor3 = rgb(0, 0, 0);
-                    Size = dim2(0, 0, cfg.fill, 0);
+                    Size = dim2(1, 0, 0, 0);
+                    AutomaticSize = Enum.AutomaticSize.Y;
                     BorderSizePixel = 0;
                     BackgroundColor3 = rgb(255, 255, 255)
                 });
@@ -1649,9 +1649,10 @@
                 });
                 
                 local a = library:create("Frame", {
-                    Position = dim2(0, 22, 0, 22);
                     BorderColor3 = rgb(0, 0, 0);
                     Parent = section;
+                    Size = dim2(1, 0, 0, 0);
+                    AutomaticSize = Enum.AutomaticSize.Y;
                     BorderSizePixel = 0;
                     BackgroundColor3 = rgb(0, 0, 0)
                 });
@@ -1661,15 +1662,17 @@
                     Position = dim2(0, 1, 0, 1);
                     BorderColor3 = rgb(0, 0, 0);
                     Size = dim2(1, -2, 1, -2);
+                    AutomaticSize = Enum.AutomaticSize.Y;
                     BorderSizePixel = 0;
                     BackgroundColor3 = rgb(46, 46, 46)
                 });	library:apply_theme(c, "c", "BackgroundColor3")
-                
+
                 local e = library:create("Frame", {
                     Parent = c;
                     Position = dim2(0, 1, 0, 1);
                     BorderColor3 = rgb(0, 0, 0);
                     Size = dim2(1, -2, 1, -2);
+                    AutomaticSize = Enum.AutomaticSize.Y;
                     BorderSizePixel = 0;
                     BackgroundColor3 = rgb(21, 21, 21)
                 });	library:apply_theme(e, "e", "BackgroundColor3")
@@ -1699,7 +1702,8 @@
                     AutomaticCanvasSize = Enum.AutomaticSize.Y;
                     ScrollBarThickness = 2;
                     ZIndex = 2;
-                    Size = dim2(1, 0, 1, 0);
+                    Size = dim2(1, 0, 0, 0);
+                    AutomaticSize = Enum.AutomaticSize.Y;
                     BackgroundColor3 = rgb(255, 255, 255);
                     TopImage = "rbxassetid://85156243582367";
                     BorderColor3 = rgb(0, 0, 0);
@@ -1732,7 +1736,7 @@
                     AnchorPoint = vec2(1, 0);
                     Position = dim2(1, 0, 0, 0);
                     Parent = e;
-                    Size = dim2(0, 3, 1, 0);
+                    Size = dim2(0, 3, 1, -30);
                     BorderSizePixel = 0;
                     ZIndex = -1;
                     BackgroundColor3 = rgb(46, 46, 46)
