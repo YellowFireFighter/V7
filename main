@@ -994,7 +994,7 @@
             -- 
 
             -- Keybind list
-                local keybindlist = library:create("Frame", {
+                keybindlist = library:create("Frame", {
                     BorderColor3 = rgb(0, 0, 0);
                     Parent = library.gui;
                     BackgroundTransparency = 1;
@@ -1417,7 +1417,7 @@
                     BorderSizePixel = 0;
                     AutomaticSize = Enum.AutomaticSize.XY;
                     BackgroundColor3 = rgb(46, 46, 46)
-                });	library:apply_theme(outline, "c", "BackgroundColor3");  library:draggify(outline)
+                });	library:apply_theme(outline, "c", "BackgroundColor3");  --library:draggify(outline)
 
                 local inline = library:create("Frame", {
                     Parent = outline;
@@ -3510,4 +3510,4 @@
     -- 
 -- 
 
-return library, notifications
+return library, notifications, keybindlist
