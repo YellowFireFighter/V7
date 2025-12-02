@@ -842,7 +842,6 @@
                 MouseCursor.ZIndex = 999
                 MouseCursor.Size = UDim2.new(0, 36, 0, 36);
                 MouseCursor.Parent = LibraryMouseGui;
-                Library.MouseCursor = MouseCursor;
 
                 Mouse.Move:Connect(function()
                     if library.gui.Enabled then 
