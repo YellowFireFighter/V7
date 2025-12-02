@@ -1330,9 +1330,12 @@
                     misc_text.Text ..= " "
                 end  
                 
-                misc_text.Text ..= " ] fps: 1000 objects rendeed: 1000"
+                local fps = math.floor(1 / run.RenderStepped:Wait())
+                local objects_rendered = #workspace:GetDescendants()
+                
+                misc_text.Text ..= " ] fps: " .. fps .. " objects rendered: " .. objects_rendered
                 menu_title.Text = "[ " .. cfg.name .. " ]"
-            end 
+            end
 
             cfg.update_text("a")
 
@@ -1352,6 +1355,21 @@
 
                     task.wait()
                 end 
+            end)
+
+            task.spawn(function()
+                while true do
+                    local fps = math.floor(1 / run.RenderStepped:Wait())
+                    local objects_rendered = #workspace:GetDescendants()
+                    
+                    misc_text.Text = "[ "
+                    for i = 1, string.len(cfg.name) do 
+                        misc_text.Text ..= " "
+                    end
+                    misc_text.Text ..= " ] fps: " .. fps .. " objects rendered: " .. objects_rendered
+                    
+                    task.wait(0.5) -- Update every 0.5 seconds to avoid lag
+                end
             end)
 
             return setmetatable(cfg, library)
