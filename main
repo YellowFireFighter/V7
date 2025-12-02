@@ -272,6 +272,7 @@
             resize_handle.Text = ""
             resize_handle.Parent = frame
             resize_handle.ZIndex = 10
+            resize_handle.Modal = true
             
             -- Visual indicator (diagonal lines)
             local indicator = library:create("ImageLabel", {
