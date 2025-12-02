@@ -60,7 +60,7 @@
 
 -- Library init
     getgenv().library = {
-        directory = "vaderhaxx",
+        directory = "fanta",
         folders = {
             "/fonts",
             "/configs",
@@ -828,6 +828,39 @@
                     BorderSizePixel = 0;
                     BackgroundColor3 = rgb(255, 255, 255)
                 }); library:resizify(a); a.Position = dim2(0, a.AbsolutePosition.Y, 0, a.AbsolutePosition.Y)
+
+                LibraryMouseGui = Instance.new("ScreenGui");
+                LibraryMouseGui.Parent = gethui();
+                LibraryMouseGui.Enabled = false;
+                LibraryMouseGui.Name = "Mouse";
+                LibraryMouseGui.DisplayOrder = 100
+                LibraryMouseGui.IgnoreGuiInset = true;
+
+                local MouseCursor = Instance.new("ImageLabel", LibraryMouseGui);
+                MouseCursor.Image = "http://www.roblox.com/asset/?id=5545698398";
+                MouseCursor.BackgroundTransparency = 1;
+                MouseCursor.ZIndex = 999
+                MouseCursor.Size = UDim2.new(0, 36, 0, 36);
+                MouseCursor.Parent = LibraryMouseGui;
+                Library.MouseCursor = MouseCursor;
+
+                Mouse.Move:Connect(function()
+                    if library.gui.Enabled then 
+                        LibraryMouseGui.Enabled = true;
+                        MouseLocation = game.UserInputService:GetMouseLocation();
+                        MouseCursor.Position = UDim2.new(0, MouseLocation.X - 18, 0, MouseLocation.Y - 18);
+                    else 
+                        LibraryMouseGui.Enabled = false;
+                    end;
+                end);
+
+                game:GetService("UserInputService").InputBegan:Connect(function(input, gp)
+                    if gp then return end  -- ignore if typing in textbox
+
+                    if input.KeyCode == Enum.KeyCode.End then
+                        library.gui.Enabled = not library.gui.Enabled
+                    end
+                end)
 
                 library:create("UIStroke", {
                     Parent = a;
