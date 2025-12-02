@@ -344,7 +344,7 @@
             local dragging = false 
             local start_position
             local start 
-            local target = frame.Parent
+            local target = frame
             if frame.Parent.Parent.Parent.Parent ~= nil then
                 target = frame.Parent.Parent.Parent.Parent.Parent.Parent -- Drag the parent instead
             end
