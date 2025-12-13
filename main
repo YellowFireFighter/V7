@@ -3417,7 +3417,9 @@
 
                     library:connection(uis.InputBegan, function(input, game_event) 
                         if not game_event then 
-                            if input.KeyCode == cfg.key then 
+                            local input_key = input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode or input.UserInputType
+                            
+                            if input_key == cfg.key then 
                                 if cfg.mode == "Toggle" then 
                                     cfg.active = not cfg.active
                                     cfg.set(cfg.active)
@@ -3433,9 +3435,9 @@
                             return 
                         end 
 
-                        local selected_key = input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode or input.UserInputType
-            
-                        if selected_key == cfg.key then
+                        local input_key = input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode or input.UserInputType
+
+                        if input_key == cfg.key then
                             if cfg.mode == "Hold" then 
                                 cfg.set(false)
                             end
