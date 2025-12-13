@@ -482,11 +482,8 @@
             end
             
             for flag_name, flag_value in pairs(config) do 
-                print("Loading flag:", flag_name, "Value:", flag_value)  -- ADD THIS LINE
                 
                 local function_set = library.config_flags[flag_name]
-                
-                print("Function set exists:", function_set ~= nil)  -- ADD THIS TOO
                 
                 -- Skip config system flags
                 if flag_name == "config_name_list" or flag_name == "config_name_textbox" then 
@@ -494,19 +491,18 @@
                 end
 
                 if function_set then 
-                    if type(flag_value) == "table" and flag_value["Transparency"] and flag_value["Color"] then
-                        -- Colorpicker
-                        print("Loading colorpicker:", flag_name)
-                        function_set(Color3.fromHex(flag_value["Color"]), flag_value["Transparency"])
-                    elseif type(flag_value) == "table" and flag_value["active"] then 
-                        -- Keybind
-                        print("Loading keybind:", flag_name)
-                        function_set(flag_value)
-                    else
-                        -- Normal values (toggles, sliders, dropdowns, textboxes)
-                        print("Loading normal value:", flag_name, flag_value)
-                        function_set(flag_value)
-                    end
+                    pcall(function()
+                        if type(flag_value) == "table" and flag_value["Transparency"] and flag_value["Color"] then
+                            -- Colorpicker
+                            function_set(Color3.fromHex(flag_value["Color"]), flag_value["Transparency"])
+                        elseif type(flag_value) == "table" and flag_value["active"] then 
+                            -- Keybind
+                            function_set(flag_value)
+                        else
+                            -- Normal values (toggles, sliders, dropdowns, textboxes)
+                            function_set(flag_value)
+                        end
+                    end)
                 else
                     print("No function_set found for:", flag_name)
                 end 
@@ -819,14 +815,6 @@
                 IgnoreGuiInset = true,
             })
 
-            library.gui2 = library:create("ScreenGui", {
-                Parent = coregui,
-                Name = "\0",
-                Enabled = true,
-                ZIndexBehavior = Enum.ZIndexBehavior.Sibling,
-                IgnoreGuiInset = true,
-            })
-
             -- Window
                 local a = library:create("Frame", {
                     Parent = library.gui;
@@ -1037,7 +1025,7 @@
             -- Keybind list
                 keybindlist = library:create("Frame", {
                     BorderColor3 = rgb(0, 0, 0);
-                    Parent = library.gui2;
+                    Parent = library.gui;
                     BackgroundTransparency = 1;
                     Position = dim2(0, 100, 0, 600);
                     Size = dim2(0, 202, 0, 66);
@@ -1291,7 +1279,7 @@
             
             -- Instances
                 local outline = library:create("Frame", {
-                    Parent = library.gui2;
+                    Parent = library.gui;
                     Size = dim2(0, 0, 0, 25);
                     Position = dim2(0, 50, 0, 50);
                     BorderColor3 = rgb(0, 0, 0);
