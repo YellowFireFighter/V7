@@ -815,6 +815,14 @@
                 IgnoreGuiInset = true,
             })
 
+            library.gui2 = library:create("ScreenGui", {
+                Parent = coregui,
+                Name = "\0",
+                Enabled = true,
+                ZIndexBehavior = Enum.ZIndexBehavior.Sibling,
+                IgnoreGuiInset = true,
+            })
+
             -- Window
                 local a = library:create("Frame", {
                     Parent = library.gui;
@@ -1025,7 +1033,7 @@
             -- Keybind list
                 keybindlist = library:create("Frame", {
                     BorderColor3 = rgb(0, 0, 0);
-                    Parent = library.gui;
+                    Parent = library.gui2;
                     BackgroundTransparency = 1;
                     Position = dim2(0, 100, 0, 600);
                     Size = dim2(0, 202, 0, 66);
@@ -1279,7 +1287,7 @@
             
             -- Instances
                 local outline = library:create("Frame", {
-                    Parent = library.gui;
+                    Parent = library.gui2;
                     Size = dim2(0, 0, 0, 25);
                     Position = dim2(0, 50, 0, 50);
                     BorderColor3 = rgb(0, 0, 0);
