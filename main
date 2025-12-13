@@ -1286,89 +1286,100 @@
             }
             
             -- Instances
-                local outline = library:create("Frame", {
-                    Parent = library.gui2;
-                    Size = dim2(0, 0, 0, 25);
-                    Position = dim2(0, 50, 0, 50);
-                    BorderColor3 = rgb(0, 0, 0);
-                    BorderSizePixel = 0;
-                    AutomaticSize = Enum.AutomaticSize.X;
-                    BackgroundColor3 = rgb(46, 46, 46)
-                });	library:apply_theme(outline, "c", "BackgroundColor3");  library:draggify(outline)
+            local outline = library:create("Frame", {
+                Parent = library.gui2;
+                Size = dim2(0, 0, 0, 25);
+                Position = dim2(0, 50, 0, 50);
+                BorderColor3 = rgb(0, 0, 0);
+                BorderSizePixel = 0;
+                AutomaticSize = Enum.AutomaticSize.X;
+                BackgroundColor3 = rgb(46, 46, 46)
+            });	library:apply_theme(outline, "c", "BackgroundColor3");  library:draggify(outline)
 
-                local inline = library:create("Frame", {
-                    Parent = outline;
-                    Position = dim2(0, 1, 0, 1);
-                    BorderColor3 = rgb(0, 0, 0);
-                    Size = dim2(1, -2, 1, -2);
-                    BorderSizePixel = 0;
-                    AutomaticSize = Enum.AutomaticSize.X;
-                    BackgroundColor3 = rgb(21, 21, 21)
-                });	library:apply_theme(inline, "e", "BackgroundColor3")
-                
-                local menu_title = library:create("TextLabel", {
-                    FontFace = library.font;
-                    Parent = inline;
-                    TextColor3 = rgb(255, 255, 255);
-                    BorderColor3 = rgb(0, 0, 0);
-                    Text = "[ ] ";
-                    AutomaticSize = Enum.AutomaticSize.XY;
-                    Position = dim2(0, 4, 0, -2);
-                    BackgroundTransparency = 1;
-                    TextXAlignment = Enum.TextXAlignment.Left;
-                    BorderSizePixel = 0;
-                    ZIndex = 2;
-                    TextSize = 12;
-                    BackgroundColor3 = rgb(255, 255, 255)
-                });
-                
-                local uigradient = library:create("UIGradient", {
-                    Color = rgbseq{rgbkey(0, rgb(255, 0, 0)), rgbkey(0.17, rgb(255, 255, 0)), rgbkey(0.33, rgb(0, 255, 0)), rgbkey(0.5, rgb(0, 255, 255)), rgbkey(0.67, rgb(0, 0, 255)), rgbkey(0.83, rgb(255, 0, 255)), rgbkey(1, rgb(255, 0, 0))};
-                    Transparency = numseq{numkey(0, -1), numkey(1, -1)};
-                    Parent = menu_title
-                });
-                
-                library:create("UIPadding", {
-                    PaddingTop = dim(0, 7);
-                    PaddingBottom = dim(0, 6);
-                    Parent = inline;
-                    PaddingRight = dim(0, 8);
-                    PaddingLeft = dim(0, 4)
-                });
-                
-                local misc_text = library:create("TextLabel", {
-                    FontFace = library.font;
-                    Parent = inline;
-                    TextColor3 = rgb(255, 255, 255);
-                    BorderColor3 = rgb(0, 0, 0);
-                    Text = "[                  ] | fps: 60 | objects: 1000";
-                    AutomaticSize = Enum.AutomaticSize.XY;
-                    Position = dim2(0, 4, 0, -2);
-                    BackgroundTransparency = 1;
-                    TextXAlignment = Enum.TextXAlignment.Left;
-                    BorderSizePixel = 0;
-                    ZIndex = 2;
-                    TextSize = 12;
-                    BackgroundColor3 = rgb(255, 255, 255)
-                });
-                
-                library:create("UIPadding", {
-                    PaddingBottom = dim(0, 1);
-                    PaddingRight = dim(0, 1);
-                    Parent = outline
-                });
-            --
+            local inline = library:create("Frame", {
+                Parent = outline;
+                Position = dim2(0, 1, 0, 1);
+                BorderColor3 = rgb(0, 0, 0);
+                Size = dim2(1, -2, 1, -2);
+                BorderSizePixel = 0;
+                AutomaticSize = Enum.AutomaticSize.X;
+                BackgroundColor3 = rgb(21, 21, 21)
+            });	library:apply_theme(inline, "e", "BackgroundColor3")
+            
+            library:create("UIPadding", {
+                PaddingTop = dim(0, 7);
+                PaddingBottom = dim(0, 6);
+                Parent = inline;
+                PaddingRight = dim(0, 8);
+                PaddingLeft = dim(0, 4)
+            });
+            
+            -- Container for horizontal layout
+            local container = library:create("Frame", {
+                Parent = inline;
+                Size = dim2(1, 0, 1, 0);
+                BackgroundTransparency = 1;
+                AutomaticSize = Enum.AutomaticSize.XY;
+            })
+            
+            library:create("UIListLayout", {
+                Parent = container;
+                FillDirection = Enum.FillDirection.Horizontal;
+                SortOrder = Enum.SortOrder.LayoutOrder;
+                Padding = dim(0, 0);
+            })
+            
+            local menu_title = library:create("TextLabel", {
+                FontFace = library.font;
+                Parent = container;
+                TextColor3 = rgb(255, 255, 255);
+                BorderColor3 = rgb(0, 0, 0);
+                Text = "[ nebulahax ]";
+                AutomaticSize = Enum.AutomaticSize.XY;
+                BackgroundTransparency = 1;
+                TextXAlignment = Enum.TextXAlignment.Left;
+                BorderSizePixel = 0;
+                ZIndex = 2;
+                TextSize = 12;
+                LayoutOrder = 1;
+                BackgroundColor3 = rgb(255, 255, 255)
+            });
+            
+            local uigradient = library:create("UIGradient", {
+                Color = rgbseq{rgbkey(0, rgb(255, 0, 0)), rgbkey(0.17, rgb(255, 255, 0)), rgbkey(0.33, rgb(0, 255, 0)), rgbkey(0.5, rgb(0, 255, 255)), rgbkey(0.67, rgb(0, 0, 255)), rgbkey(0.83, rgb(255, 0, 255)), rgbkey(1, rgb(255, 0, 0))};
+                Transparency = numseq{numkey(0, -1), numkey(1, -1)};
+                Parent = menu_title
+            });
+            
+            local misc_text = library:create("TextLabel", {
+                FontFace = library.font;
+                Parent = container;
+                TextColor3 = rgb(255, 255, 255);
+                BorderColor3 = rgb(0, 0, 0);
+                Text = " | fps: 60 | objects: 1000 | spectators: 0";
+                AutomaticSize = Enum.AutomaticSize.XY;
+                BackgroundTransparency = 1;
+                TextXAlignment = Enum.TextXAlignment.Left;
+                BorderSizePixel = 0;
+                ZIndex = 2;
+                TextSize = 12;
+                LayoutOrder = 2;
+                BackgroundColor3 = rgb(255, 255, 255)
+            });
+            
+            library:create("UIPadding", {
+                PaddingBottom = dim(0, 1);
+                PaddingRight = dim(0, 1);
+                Parent = outline
+            });
 
             function cfg.update_text(text)
                 local fps = math.floor(1 / run.RenderStepped:Wait())
                 local objects_rendered = #workspace:GetDescendants()
+                local spectators = game.Players.LocalPlayer:GetAttribute("Spectators") or 0
                 
-                misc_text.Text = "[ "
-                for i = 1, string.len(cfg.name) do 
-                    misc_text.Text ..= " "
-                end  
-                misc_text.Text ..= " ] | fps: " .. fps .. " | objects: " .. objects_rendered .. " "
                 menu_title.Text = "[ " .. cfg.name .. " ]"
+                misc_text.Text = " | fps: " .. fps .. " | objects: " .. objects_rendered .. " | spectators: " .. spectators .. " "
             end 
 
             cfg.update_text("a")
