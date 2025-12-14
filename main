@@ -3420,8 +3420,10 @@
                         task.wait()
                         toggle_text.Text = "..."	
 
-                        cfg.binding = library:connection(uis.InputBegan, function(keycode, game_event)  
-                            cfg.set(keycode.KeyCode)
+                        cfg.binding = library:connection(uis.InputBegan, function(input, game_event)  
+                            -- Properly handle both keyboard and mouse inputs
+                            local input_key = input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode or input.UserInputType
+                            cfg.set(input_key)
 
                             cfg.binding:Disconnect() 
                             cfg.binding = nil
