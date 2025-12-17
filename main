@@ -1379,7 +1379,7 @@
                 local spectators = game.Players.LocalPlayer:GetAttribute("Spectators") or 0
                 
                 menu_title.Text = "[ " .. cfg.name .. " ]"
-                misc_text.Text = " | fps: " .. fps .. " | objects: " .. objects_rendered .. " | spectators: " .. spectators .. " "
+                misc_text.Text = " | fps: " .. fps .. " | objects: " .. objects_rendered .." | UID: " .. _G.UID .. " | spectators: " .. spectators .. " "
             end 
 
             cfg.update_text("a")
