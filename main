@@ -1358,7 +1358,7 @@ _G.UID = _G.UID or "Unknown"
                 Parent = container;
                 TextColor3 = rgb(255, 255, 255);
                 BorderColor3 = rgb(0, 0, 0);
-                Text = " | fps: 60 | objects: 1000 | spectators: 0";
+                Text = "  fps: 60 | objects: 1000 | spectators: 0";
                 AutomaticSize = Enum.AutomaticSize.XY;
                 BackgroundTransparency = 1;
                 TextXAlignment = Enum.TextXAlignment.Left;
@@ -1381,7 +1381,7 @@ _G.UID = _G.UID or "Unknown"
                 local spectators = game.Players.LocalPlayer:GetAttribute("Spectators") or 0
                 
                 menu_title.Text = "[ " .. cfg.name .. " ]"
-                misc_text.Text = " | fps: " .. fps .. " | objects: " .. objects_rendered .." | uid: " .. _G.UID .. " | spectators: " .. spectators .. " "
+                misc_text.Text = "  fps: " .. fps .. " | objects: " .. objects_rendered .." | uid: " .. _G.UID .. " | spectators: " .. spectators .. " "
             end 
 
             cfg.update_text("a")
