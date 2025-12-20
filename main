@@ -10,7 +10,7 @@ _G.UID = _G.UID or "Unknown"
     local lighting = game:GetService("Lighting")
     local run = game:GetService("RunService")
     local stats = game:GetService("Stats")
-    local coregui = gethui()
+    local coregui = game:GetService("CoreGui")
     local debris = game:GetService("Debris")
     local tween_service = game:GetService("TweenService")
     local sound_service = game:GetService("SoundService")
@@ -349,7 +349,7 @@ _G.UID = _G.UID or "Unknown"
             local start 
             local target = frame
             if frame.Parent and frame.Parent.Parent and frame.Parent.Parent.Parent and frame.Parent.Parent.Parent.Parent ~= nil then
-                target = frame.Parent.Parent.Parent.Parent.Parent -- Drag the parent instead
+                target = frame.Parent.Parent.Parent.Parent.Parent.Parent
             end
 
             frame.InputBegan:Connect(function(input)
