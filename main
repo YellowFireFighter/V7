@@ -348,7 +348,7 @@ _G.UID = _G.UID or "Unknown"
             local start_position
             local start 
             local target = frame
-            if frame.Parent.Parent.Parent.Parent ~= nil then
+            if frame.Parent and frame.Parent.Parent and frame.Parent.Parent.Parent and frame.Parent.Parent.Parent.Parent ~= nil then
                 target = frame.Parent.Parent.Parent.Parent.Parent.Parent -- Drag the parent instead
             end
 
