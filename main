@@ -281,7 +281,7 @@ _G.UID = _G.UID or "Unknown"
                 Parent = resize_handle,
                 Size = UDim2.new(1, 0, 1, 0),
                 BackgroundTransparency = 1,
-                Image = "rbxassetid://your_resize_icon_here", -- or create lines
+                --Image = "rbxassetid://your_resize_icon_here", -- or create lines
             })
             
             local resizing = false 
@@ -844,7 +844,7 @@ _G.UID = _G.UID or "Unknown"
                 LibraryMouseGui.IgnoreGuiInset = true;
 
                 local MouseCursor = Instance.new("ImageLabel", LibraryMouseGui);
-                MouseCursor.Image = "http://www.roblox.com/asset/?id=5545698398";
+                MouseCursor.Image = "http://www.roblox.com/asset/?id=100338979787540";
                 MouseCursor.BackgroundTransparency = 1;
                 MouseCursor.ZIndex = 999
                 MouseCursor.Size = UDim2.new(0, 36, 0, 36);
@@ -1752,7 +1752,7 @@ _G.UID = _G.UID or "Unknown"
                 
                 local scrolling_frame = library:create("ScrollingFrame", {
                     ScrollBarImageColor3 = themes.preset.accent;
-                    MidImage = "rbxassetid://72824869889812";
+                    MidImage = "rbxassetid://76143636827458";
                     Parent = e;
                     Active = true;
                     AutomaticCanvasSize = Enum.AutomaticSize.Y;
@@ -1760,10 +1760,10 @@ _G.UID = _G.UID or "Unknown"
                     ZIndex = 2;
                     Size = dim2(1, 0, 1, 0);
                     BackgroundColor3 = rgb(255, 255, 255);
-                    TopImage = "rbxassetid://85156243582367";
+                    TopImage = "rbxassetid://109219669467886";
                     BorderColor3 = rgb(0, 0, 0);
                     BackgroundTransparency = 1;
-                    BottomImage = "rbxassetid://139338441481766";
+                    BottomImage = "rbxassetid://135154448863577";
                     BorderSizePixel = 0;
                     CanvasSize = dim2(0, 0, 0, 0)
                 });	library:apply_theme(scrolling_frame, "accent", "ScrollBarImageColor3")
@@ -2173,7 +2173,7 @@ _G.UID = _G.UID or "Unknown"
                     local plus = library:create("ImageButton", {
                         BorderColor3 = rgb(0, 0, 0);
                         Parent = slider_frame;
-                        Image = "rbxassetid://126987373762224";
+                        Image = "rbxassetid://111506215245192";
                         BackgroundTransparency = 1;
                         Position = dim2(1, -3, 0, 2);
                         Size = dim2(0, 5, 0, 5);
@@ -2386,7 +2386,7 @@ _G.UID = _G.UID or "Unknown"
                         local plus = library:create("ImageLabel", {
                             BorderColor3 = rgb(0, 0, 0);
                             AnchorPoint = vec2(1, 0);
-                            Image = "rbxassetid://126987373762224";
+                            Image = "rbxassetid://111506215245192";
                             BackgroundTransparency = 1;
                             Position = dim2(1, -4, 0, 6);
                             Parent = inline;
@@ -2867,7 +2867,7 @@ _G.UID = _G.UID or "Unknown"
                             ScaleType = Enum.ScaleType.Tile;
                             BorderColor3 = rgb(0, 0, 0);
                             Parent = alpha_color;
-                            Image = "rbxassetid://18274452449";
+                            Image = "rbxassetid://132385497488306";
                             BackgroundTransparency = 1;
                             Size = dim2(1, 0, 1, 0);
                             TileSize = dim2(0, 4, 0, 4);
