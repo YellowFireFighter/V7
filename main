@@ -10,7 +10,7 @@ _G.UID = _G.UID or "Unknown"
     local lighting = game:GetService("Lighting")
     local run = game:GetService("RunService")
     local stats = game:GetService("Stats")
-    local coregui = game:GetService("CoreGui")
+    local coregui = gethui and gethui() or game:GetService("CoreGui")
     local debris = game:GetService("Debris")
     local tween_service = game:GetService("TweenService")
     local sound_service = game:GetService("SoundService")
@@ -348,8 +348,11 @@ _G.UID = _G.UID or "Unknown"
             local start_position
             local start 
             local target = frame
-            if frame.Parent and frame.Parent.Parent and frame.Parent.Parent.Parent and frame.Parent.Parent.Parent.Parent ~= nil then
+            if frame.Parent and frame.Parent.Parent and frame.Parent.Parent.Parent and frame.Parent.Parent.Parent.Parent ~= nil and frame.Parent.Parent.Parent.Parent.Parent then
                 target = frame.Parent.Parent.Parent.Parent.Parent.Parent
+            else
+                return
+                --target = frame.Parent.Parent.Parent.Parent.Parent
             end
 
             frame.InputBegan:Connect(function(input)
@@ -850,6 +853,7 @@ _G.UID = _G.UID or "Unknown"
                 MouseCursor.Size = UDim2.new(0, 36, 0, 36);
                 MouseCursor.Parent = LibraryMouseGui;
 
+                local Mouse = lp:GetMouse();
                 Mouse.Move:Connect(function()
                     if library.gui.Enabled then 
                         LibraryMouseGui.Enabled = true;
