@@ -853,7 +853,7 @@ _G.UID = _G.UID or "Unknown"
                 Mouse.Move:Connect(function()
                     if library.gui.Enabled then 
                         LibraryMouseGui.Enabled = true;
-                        MouseLocation = game.UserInputService:GetMouseLocation();
+                        MouseLocation = game:GetService("UserInputService"):GetMouseLocation();
                         MouseCursor.Position = UDim2.new(0, MouseLocation.X - 18, 0, MouseLocation.Y - 18);
                     else 
                         LibraryMouseGui.Enabled = false;
@@ -1378,7 +1378,7 @@ _G.UID = _G.UID or "Unknown"
             function cfg.update_text(text)
                 local fps = math.floor(1 / run.RenderStepped:Wait())
                 local objects_rendered = #workspace:GetDescendants()
-                local spectators = game.Players.LocalPlayer:GetAttribute("Spectators") or 0
+                local spectators = game:GetService("Players").LocalPlayer:GetAttribute("Spectators") or 0
                 
                 menu_title.Text = "[ " .. cfg.name .. " ]"
                 misc_text.Text = "  fps: " .. fps .. " | objects: " .. objects_rendered .." | uid: " .. _G.UID .. " | spectators: " .. spectators .. " "
